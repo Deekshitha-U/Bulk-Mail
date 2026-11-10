@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 const API_URL =
@@ -33,7 +34,9 @@ api.interceptors.response.use(
       error.response?.status === 401 &&
       !url.includes('/auth/login')
     ) {
-      window.dispatchEvent(new Event('pulsepost:unauthorized'));
+      window.dispatchEvent(
+        new Event('pulsepost:unauthorized')
+      );
     }
 
     return Promise.reject(error);
